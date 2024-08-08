@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:galabungamatahari/pages/index.dart';
+import 'package:galabungamatahari/utils/index.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       ),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 103, 77, 17),
+          seedColor: AppColors.primaryBrown,
         ),
         useMaterial3: true,
       ),

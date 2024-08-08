@@ -5,6 +5,7 @@ class AppColors {
 
   static const paleYellow = Color(0xFFFBDD9D);
   static const backgroundYellow = Color(0xFFefede0);
+  static const primaryBrown = Color.fromARGB(255, 103, 77, 17);
   static const highSaturationYellow = Color(0xFFE8B12D);
   static const paleDarkGreen = Color(0xFF4F4E28);
   static const darkBrown = Color(0xFF925F17);

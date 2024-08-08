@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:galabungamatahari/cubits/home/home_cubit.dart';
 import 'package:galabungamatahari/gen/assets.gen.dart';
+import 'package:galabungamatahari/pages/views/index.dart';
 import 'package:galabungamatahari/utils/index.dart';
 import 'package:gap/gap.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
@@ -58,26 +61,40 @@ class MobileHomePage extends StatelessWidget {
                   },
                 ),
                 const Gap(32),
-                Text(
-                  'Apa Gala Bunga Matahari versi kamu?',
-                  textAlign: TextAlign.center,
-                  style: TypoStyle.h2(context).copyWith(
-                    color: AppColors.darkBrown,
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: BlocBuilder<HomeCubit, HomeState>(
+                    builder: (context, state) {
+                      if (state.isShowForm) {
+                        return const FormView(isMobile: true);
+                      }
+
+                      return Column(
+                        children: [
+                          Text(
+                            'Apa Gala Bunga Matahari versi kamu?',
+                            textAlign: TextAlign.center,
+                            style: TypoStyle.h2(context).copyWith(
+                              color: AppColors.darkBrown,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const Gap(16),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 16,
+                              ),
+                            ),
+                            onPressed: context.read<HomeCubit>().showForm,
+                            child: const Text('Saya ingin berbagi cerita'),
+                          ),
+                          const Gap(16),
+                        ],
+                      );
+                    },
                   ),
                 ),
-                const Gap(16),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 16,
-                    ),
-                  ),
-                  onPressed: () {},
-                  child: const Text('Saya ingin berbagi cerita'),
-                ),
-                const Gap(16),
               ],
             ),
           ),
